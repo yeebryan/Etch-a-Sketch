@@ -1,0 +1,42 @@
+html {
+  font-size: 16px;
+}
+
+.header {
+  padding: 1em;
+  text-align: center;
+}
+
+#container {
+  display: grid;
+  width: 400px;
+  height: 400px;
+  position: relative;
+
+  margin: 50px auto;
+  /* center grid on the page* (top bottom) */
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.cell:hover {
+  background-color: blueviolet;
+  transition: background-color 0.3s; /* Add a smooth transition effect */
+}
+
+#reset-button {
+  width: 5rem;
+  height: 2rem;
+  font-size: 1rem;
+  position: absolute; /* don't be part of the normal flow*/
+  /* top & left: tell button to go middle of container ("body" in this case)*/
+  top: 80%;
+  left: 50%;
+  /* adjust position perfectly centered */
+  transform: translate(-50%, -50%);
+}
