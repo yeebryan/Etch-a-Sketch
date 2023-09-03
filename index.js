@@ -1,5 +1,7 @@
 const container = document.getElementById("container");
 const resetButton = document.getElementById("reset-button");
+const colorButton = document.getElementById("color-button");
+const blackwhiteBtn = document.getElementById("black-white-button");
 const maxIntensity = 10;
 
 function createGrid(size) {
@@ -19,6 +21,7 @@ function createGrid(size) {
   }
 }
 
+// clear GRID for reset purpose
 function clearGrid() {
   const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => container.removeChild(cell));
@@ -46,6 +49,64 @@ function hoverEffect() {
   });
 }
 
+// COLORS w/ Intensity
+
+function randomizeColors() {
+  const cells = document.querySelectorAll(".cell"); // gather NodeList
+  cells.forEach((cell) => {
+    // add mouseover event inside here:
+    cell.addEventListener("mouseover", () => {
+      let intensity = parseInt(cell.dataset.intensity);
+      console.log(`colors' intensity ${intensity}`);
+
+      if (intensity < maxIntensity) {
+        intensity++;
+        cell.dataset.intensity = intensity;
+      }
+
+      // after updates on intensity, proceed to generate random color
+      const randomColor =
+        "#" + Math.floor(Math.random() * 16777215).toString(16);
+      console.log(randomColor);
+
+      // set background color to random color
+      cell.style.backgroundColor = randomColor;
+    });
+  });
+}
+
+// overRIDE / remove "default" hover effect
+function removeHover() {
+  const cells = document.querySelectorAll(".cell"); // gather NodeList
+  cells.forEach((cell) => {
+    cell.removeEventListener("mouseover", () => {});
+  });
+}
+
+function resetGridColor() {
+  const cells = document.querySelectorAll(".cell"); // gather NodeList
+  console.log("blackwhite press");
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = "rgba(0, 0, 0, 0)";
+    cell.dataset.intensity = 0;
+  });
+}
+
+// sub COLOR btn
+colorButton.addEventListener("click", () => {
+  randomizeColors();
+  removeHover();
+  resetGridColor();
+  console.log("color work work");
+});
+
+// back to black-white shades
+blackwhiteBtn.addEventListener("click", () => {
+  resetGridColor();
+  hoverEffect();
+});
+
+// reset
 resetButton.addEventListener("click", () => {
   let newSize = prompt("Enter number of squares per side (max 100)");
   newSize = Math.min(Math.max(parseInt(newSize), 1), 100);

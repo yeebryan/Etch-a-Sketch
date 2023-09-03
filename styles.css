@@ -3,7 +3,7 @@ html {
 }
 
 .header {
-  padding: 1em;
+  padding: 1.2em;
   text-align: center;
 }
 
@@ -29,14 +29,31 @@ html {
   transition: background-color 0.3s; /* Add a smooth transition effect */
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+  padding: 1.2em;
+  gap: 1em;
+}
+
 #reset-button {
   width: 5rem;
   height: 2rem;
-  font-size: 1rem;
-  position: absolute; /* don't be part of the normal flow*/
+  /* font-size: 1rem;
+  position: relative; /* cannot 'absolute' cause it will eat into the cells when scale*/
   /* top & left: tell button to go middle of container ("body" in this case)*/
-  top: 80%;
-  left: 50%;
+
   /* adjust position perfectly centered */
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
+}
+
+#color-button {
+  width: 5rem;
+  height: 2rem;
+  /* font-size: 1rem;
+  position: relative; /* cannot 'absolute' cause it will eat into the cells when scale*/
+  /* top & left: tell button to go middle of container ("body" in this case)*/
+
+  /* adjust position perfectly centered */
+  /* transform: translate(-50%, -50%); */
 }
